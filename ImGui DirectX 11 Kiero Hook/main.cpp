@@ -110,6 +110,8 @@ DWORD WINAPI MainThread(LPVOID lpReserved)
 			scripting.init_scripting();
 			scripting.reload_scripts();
 
+			// woahhh
+
 			init_hook = true;
 
 		}
