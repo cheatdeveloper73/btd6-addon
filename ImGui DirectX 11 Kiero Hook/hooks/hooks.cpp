@@ -112,12 +112,21 @@ void hooks::init()
 {
 
 	if (!hook_function(il2cpp::get_method("Assets.Scripts.Simulation", "Simulation", "Simulate")->methodPointer, hk_simulate))
-		MessageBoxA(NULL, NULL, "dababy", NULL);
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking simulate.", NULL);
+		exit(0);
+	}
 
 	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.UI_New.Tutorial", "InGameTutorial", "Update")->methodPointer, hk_tutorial_update))
-		MessageBoxA(NULL, NULL, "dababy", NULL);
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking update", NULL);
+		exit(0);
+	}
 
 	if (!hook_function(il2cpp::get_method("Assets.Scripts.Simulation.Towers", "TowerManager", "GetFreeUpgrade")->methodPointer, hk_tower_free_upgrade))
-		MessageBoxA(NULL, NULL, "dababy", NULL);
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking getfreeupgrade.", NULL);
+		exit(0);
+	}
 
 }

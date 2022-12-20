@@ -110,18 +110,38 @@ inline void quicklog(const std::string& text)
 	 CHECK(scriptengine->RegisterObjectType("IL2CPPMethodInfo", sizeof(il2cpp::il2cppMethodInfo), asOBJ_VALUE | asOBJ_POD));
 	 CHECK(scriptengine->RegisterObjectType("System_String_o", sizeof(System_String_o), asOBJ_VALUE | asOBJ_POD));
 
-	 CHECK(scriptengine->RegisterObjectType("Assets_Scripts_Simulation_Simulation_Fields", sizeof(Assets_Scripts_Simulation_Simulation_Fields), asOBJ_VALUE | asOBJ_POD));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool CanEarnXP", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::canEarnXP)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool DebugOptions", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::debugOptions)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool InstantCooldown", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::instantCooldowns)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool PauseWeapons", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::pauseWeapons)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "float EndOnRoundAdditionalTime", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::endOnRoundAdditionalTime)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool HasCashChanged", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::hasCashChanged)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool HasHealthChanged", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::hasHealthChanged)));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool AlternateHeliControls", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::alternateHeliControls)));
-
-	 CHECK(scriptengine->RegisterObjectType("Assets_Scripts_Simulation_Simulation_o", sizeof(Assets_Scripts_Simulation_Simulation_o), asOBJ_VALUE | asOBJ_POD));
-	 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_o", "Assets_Scripts_Simulation_Simulation_Fields Fields", asOFFSET(Assets_Scripts_Simulation_Simulation_o, Assets_Scripts_Simulation_Simulation_o::fields)));
+	 {
+		 CHECK(scriptengine->RegisterObjectType("Assets_Scripts_Simulation_Simulation_Fields", sizeof(Assets_Scripts_Simulation_Simulation_Fields), asOBJ_VALUE | asOBJ_POD));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "uint localObjectId", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::localObjectId)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool canEarnXP", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::canEarnXP)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool debugOptions", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::debugOptions)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool instantCooldowns", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::instantCooldowns)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool pauseWeapons", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::pauseWeapons)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "float endOnRoundAdditionalTime", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::endOnRoundAdditionalTime)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool hasCashChanged", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::hasCashChanged)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool hasHealthChanged", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::hasHealthChanged)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool alternateHeliControls", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::alternateHeliControls)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int showCancel", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::showCancel)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool gameStarted", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::gameStarted)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool _gameWon_k__BackingField", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::_gameWon_k__BackingField)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool matchJustWon", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::matchJustWon)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool gameLost", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::gameLost)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool noLivesLost", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::noLivesLost)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool autoPlay", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::autoPlay)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool blockAutoPlay", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::blockAutoPlay)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int inputInterest", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::inputInterest)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool hasTakenLeakDamage", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::hasTakenLeakDamage)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool _WasDoubleCashUsed_k__BackingField", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::_WasDoubleCashUsed_k__BackingField)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "bool sandbox", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::sandbox)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "float lastSetHealth", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::lastSetHealth)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int sandBoxResetHealthTimer", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::sandBoxResetHealthTimer)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int raceSendRoundCount", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::raceSendRoundCount)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int raceSendRoundTimer", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::raceSendRoundTimer)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int roundStartTime", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::roundStartTime)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "float cachedSimBehaviorCashModifier", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::cachedSimBehaviorCashModifier))); CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_Fields", "int cachedTierCount", asOFFSET(Assets_Scripts_Simulation_Simulation_Fields, Assets_Scripts_Simulation_Simulation_Fields::cachedTierCount)));
+		 CHECK(scriptengine->RegisterObjectType("Assets_Scripts_Simulation_Simulation_o", sizeof(Assets_Scripts_Simulation_Simulation_o), asOBJ_VALUE | asOBJ_POD));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Simulation_Simulation_o", "Assets_Scripts_Simulation_Simulation_Fields fields", asOFFSET(Assets_Scripts_Simulation_Simulation_o, Assets_Scripts_Simulation_Simulation_o::fields)));
+	 }
 
 	 {
 		 CHECK(scriptengine->RegisterObjectType("BoolReference", sizeof(BoolReference), asOBJ_REF));
@@ -165,12 +185,29 @@ inline void quicklog(const std::string& text)
 		 CHECK(scriptengine->RegisterGlobalFunction("bool Combo(string label, string items, IntReference&inout value)", asFUNCTION(imgui_interface::Combo), asCALL_CDECL));
 		 CHECK(scriptengine->RegisterGlobalFunction("bool SliderInt(string label, IntReference&inout value, int min_value, int max_value)", asFUNCTION(imgui_interface::SliderInt), asCALL_CDECL));
 		 CHECK(scriptengine->RegisterGlobalFunction("bool SliderFloat(string label, FloatReference&inout value, float min_value, float max_value)", asFUNCTION(imgui_interface::SliderFloat), asCALL_CDECL));
+
+		 CHECK(scriptengine->RegisterGlobalProperty("bool InstantKillBloons", &ui::instant_kill_bloons));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool InfiniteCash", &ui::infinite_cash));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool InfiniteHealth", &ui::infinite_health));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool TutorialSkip", &ui::tutorial_skip));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool InstantWinGame", &ui::instant_win_game));
+		 CHECK(scriptengine->RegisterGlobalProperty("float TowerSizeScale", &ui::tower_size_scale));
+		 CHECK(scriptengine->RegisterGlobalProperty("float BloonSizeScale", &ui::bloon_size_scale));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool FreeUpgrades", &ui::free_upgrades));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool FasterForward", &ui::faster_forward));
+		 CHECK(scriptengine->RegisterGlobalProperty("float FasterForwardSpeed", &ui::faster_forward_speed));
+		 CHECK(scriptengine->RegisterGlobalProperty("bool InstantAbilityCooldowns", &ui::instant_ability_cooldown));
+
 	 }
 
-	 CHECK(scriptengine->SetDefaultNamespace("Input"));
-	 CHECK(scriptengine->RegisterGlobalFunction("void LeftClickDown()", asFUNCTION(winapi_interface::SendLeftClickDown), asCALL_CDECL));
-	 CHECK(scriptengine->RegisterGlobalFunction("void LeftClickUp()", asFUNCTION(winapi_interface::SendLeftClickUp), asCALL_CDECL));
-	 CHECK(scriptengine->RegisterGlobalFunction("int GetKeyState(int key)", asFUNCTION(GetAsyncKeyState), asCALL_CDECL));
+	 {
+		 CHECK(scriptengine->SetDefaultNamespace("Input"));
+		 CHECK(scriptengine->RegisterGlobalFunction("void LeftClickDown()", asFUNCTION(winapi_interface::SendLeftClickDown), asCALL_CDECL));
+		 CHECK(scriptengine->RegisterGlobalFunction("void LeftClickUp()", asFUNCTION(winapi_interface::SendLeftClickUp), asCALL_CDECL));
+		 CHECK(scriptengine->RegisterGlobalFunction("int GetKeyState(int key)", asFUNCTION(GetAsyncKeyState), asCALL_CDECL));
+	 }
+
+
 
 	 return true;
 
