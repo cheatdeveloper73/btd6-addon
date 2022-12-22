@@ -41,6 +41,13 @@ namespace ui
 
 	inline bool instant_ability_cooldown = false;
 
+	inline bool unlock_all_heros = false;
+	inline bool unlock_all_towers = false;
+	inline bool unlock_all_mk = false;
+	inline bool unlock_all_tower_upgrades = false;
+	inline bool unlock_all_maps = false;
+	inline bool single_player_coop = false;
+
 	void render();
 
 }

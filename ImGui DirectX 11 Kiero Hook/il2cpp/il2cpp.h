@@ -68,6 +68,8 @@ namespace il2cpp
 
 		}
 
+		return nullptr;
+
 	}
 
 	inline std::string to_string(System_String_o* str)

@@ -259,13 +259,22 @@ void ui::render()
 				ImGui::SliderFloat("Tower Size Scale", &tower_size_scale, 0.f, 10.f);
 				ImGui::SliderFloat("Bloon Size Scale", &bloon_size_scale, 0.f, 10.f);
 
+				ImGui::Checkbox("Unlock All Towers", &unlock_all_towers);
+				ImGui::Checkbox("Unlock All Knowledge", &unlock_all_mk);
+				ImGui::Checkbox("Unlock All Maps", &unlock_all_maps);
+				ImGui::Checkbox("Unlock All Heros", &unlock_all_heros);
+
+				ImGui::Checkbox("Instant Ability Cooldowns", &instant_ability_cooldown);
+
+				ImGui::Checkbox("Unlock All Tower Upgrades", &unlock_all_tower_upgrades);
+				ImGui::Checkbox("Player Co-Op With 1 Player", &single_player_coop);
+
 				ImGui::EndChild();
 
 				ImGui::SameLine();
 
 				ImGui::BeginChild("content2", ImVec2((620 / 2) - 5, 470), true);
 
-				ImGui::Checkbox("Instant Ability Cooldowns", &instant_ability_cooldown);
 				ImGui::Checkbox("Super Fast-Forward", &faster_forward);
 				ImGui::SliderFloat("Super Fast-Forward Speed", &faster_forward_speed, 0.1f, 100.f);
 

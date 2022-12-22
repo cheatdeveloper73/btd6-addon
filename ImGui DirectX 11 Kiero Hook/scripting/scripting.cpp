@@ -164,6 +164,45 @@ inline void quicklog(const std::string& text)
 	 }
 
 	 {
+		 CHECK(scriptengine->RegisterObjectType("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", sizeof(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields), asOBJ_VALUE | asOBJ_POD));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool lockTowerPurchases", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lockTowerPurchases)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool lockHeroPurchases", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lockHeroPurchases)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool lockTowerUpgrades", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lockTowerUpgrades)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool lockPowerActivations", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lockPowerActivations)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool lockAbilities", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lockAbilities)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool disableHomeButton", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::disableHomeButton)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "float roundHintAutoHideTime", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::roundHintAutoHideTime)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "float roundHintTimer", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::roundHintTimer)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool initialised", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::initialised)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool matchStarted", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::matchStarted)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool matchWon", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::matchWon)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool matchLost", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::matchLost)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool waitingForVictoryScreen", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::waitingForVictoryScreen)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool popupShowing", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::popupShowing)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int lastSetHealth", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lastSetHealth)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int lastSetCash", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lastSetCash)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int lastSetRound", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::lastSetRound)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool monkeyTeamsViolated", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::monkeyTeamsViolated)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool completedMonkeyTeams", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::completedMonkeyTeams)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "System_String_o& selectedNamedMonkeyKey", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::selectedNamedMonkeyKey)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int currentRoundId", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::currentRoundId)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool forcePlayerSaveEndOfRound", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::forcePlayerSaveEndOfRound)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool hasSentEndGameAnalytics", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::hasSentEndGameAnalytics)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool _reviewMapMode", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::_reviewMapMode)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool quitting", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::quitting)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int _GameId_k__BackingField", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::_GameId_k__BackingField)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int _AttemptId_k__BackingField", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::_AttemptId_k__BackingField)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "float stepTarget", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::stepTarget)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool stoppedClockForMenuOpen", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::stoppedClockForMenuOpen)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "bool playBtnDisabled", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::playBtnDisabled)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int goldenBloonsPopped", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::goldenBloonsPopped)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "int goldenBloonMMEarnt", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::goldenBloonMMEarnt)));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_Fields", "System_String_o& tier5BossLoot", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_Fields, Assets_Scripts_Unity_UI_New_InGame_InGame_Fields::tier5BossLoot)));
+		 CHECK(scriptengine->RegisterObjectType("Assets_Scripts_Unity_UI_New_InGame_InGame_o", sizeof(Assets_Scripts_Unity_UI_New_InGame_InGame_o), asOBJ_VALUE | asOBJ_POD));
+		 CHECK(scriptengine->RegisterObjectProperty("Assets_Scripts_Unity_UI_New_InGame_InGame_o", "Assets_Scripts_Unity_UI_New_InGame_InGame_Fields fields", asOFFSET(Assets_Scripts_Unity_UI_New_InGame_InGame_o, Assets_Scripts_Unity_UI_New_InGame_InGame_o::fields)));
+	 }
+
+	 {
 		 CHECK(scriptengine->SetDefaultNamespace("IL2CPP"));
 
 		 CHECK(scriptengine->RegisterGlobalFunction("IL2CPPClass& FindClass(string namespxce, string klass)", asFUNCTION(il2cpp_interface::FindClass), asCALL_CDECL));
@@ -505,7 +544,7 @@ inline void quicklog(const std::string& text)
 
 	 AstroScript script = current_scripts[id];
 
-	 if (!(callback_name == "OnRender" || callback_name == "OnSimulate"))
+	 if (!(callback_name == "OnRender" || callback_name == "OnSimulate" || callback_name == "OnInGameUpdate"))
 	 {
 
 		 quicklog("Invalid callback name! " + script.name);
@@ -534,41 +573,15 @@ inline void quicklog(const std::string& text)
 
 	 asIScriptFunction* func = module->GetFunctionByName(function_name.c_str());
 
-	 if (callback_name == "OnRender")
+	 if (!func)
 	 {
 
-		 if (!func)
-		 {
-
-			 quicklog("Failed to find " + function_name + " is it defined? " + script.name);
-			 return;
-
-		 }
-
-		 current_scripts[id].callbacks.emplace_back(AstroScriptCallback{ func, "OnRender" });
-
-	 }
-	 else if (callback_name == "OnSimulate")
-	 {
-
-		 if (!func)
-		 {
-
-			 quicklog("Failed to find " + function_name + " is it defined? " + script.name);
-			 return;
-
-		 }
-
-		 current_scripts[id].callbacks.emplace_back(AstroScriptCallback{ func, "OnSimulate" });
-
-	 }
-	 else
-	 {
-
-		 quicklog("Unknown error when adding callback! " + script.name);
+		 quicklog("Failed to find " + function_name + " is it defined? " + script.name);
 		 return;
 
 	 }
+
+	 current_scripts[id].callbacks.emplace_back(AstroScriptCallback{ func, callback_name });
 
 	 quicklog("Added script callback! " + script.name);
 

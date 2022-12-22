@@ -51,20 +51,24 @@ void __cdecl hk_simulate(Assets_Scripts_Simulation_Simulation_o* thisptr)
 
 	thisptr->fields.instantCooldowns = ui::instant_ability_cooldown;
 
+	static bool set_speed = false;
+
 	if (ui::faster_forward)
 	{
 
 		il2cpp::set_static_field_value<float>(il2cpp::find_class("Assets.Scripts.Utils", "TimeManager"), "networkScale", ui::faster_forward_speed);
 		il2cpp::set_static_field_value<float>(il2cpp::find_class("Assets.Scripts.Utils", "TimeManager"), "timeScaleWithoutNetwork", ui::faster_forward_speed);
 		il2cpp::set_static_field_value<float>(il2cpp::find_class("Assets.Scripts.Utils", "TimeManager"), "maxSimulationStepsPerUpdate", ui::faster_forward_speed);
+		set_speed = true;
 
 	}
-	else
+	else if (set_speed && !ui::faster_forward)
 	{
 
 		il2cpp::set_static_field_value<float>(il2cpp::find_class("Assets.Scripts.Utils", "TimeManager"), "networkScale", 1.f);
 		il2cpp::set_static_field_value<float>(il2cpp::find_class("Assets.Scripts.Utils", "TimeManager"), "timeScaleWithoutNetwork", 1.f);
 		il2cpp::set_static_field_value<float>(il2cpp::find_class("Assets.Scripts.Utils", "TimeManager"), "maxSimulationStepsPerUpdate", 1.f);
+		set_speed = false;
 
 	}
 
@@ -108,6 +112,90 @@ bool __cdecl hk_tower_free_upgrade(Assets_Scripts_Simulation_Towers_TowerManager
 
 }
 
+using f_ingame_update = void(__cdecl*)(Assets_Scripts_Unity_UI_New_InGame_InGame_o*);
+void __cdecl hk_ingame_update(Assets_Scripts_Unity_UI_New_InGame_InGame_o* thisptr)
+{
+
+	for (auto script : scripting.get_current_scripts())
+		for (auto callback : script.callbacks)
+			if (callback.callback_name == "OnInGameUpdate")
+				scripting.run_script_from_function(callback.function, thisptr);
+
+	return reinterpret_cast<f_ingame_update>(hooks::hooks[3].original_function)(thisptr);
+
+}
+
+using f_has_upgrade = bool(__cdecl*)(Assets_Scripts_Unity_Player_Btd6Player_o*, System_String_o*);
+bool __cdecl hk_has_upgrade(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr, System_String_o* upgrade_id)
+{
+
+	if (ui::unlock_all_tower_upgrades)
+		return true;
+
+	return reinterpret_cast<f_has_upgrade>(hooks::hooks[4].original_function)(thisptr, upgrade_id);
+
+}
+
+using f_has_unlocked_tower = bool(__cdecl*)(Assets_Scripts_Unity_Player_Btd6Player_o*, System_String_o*, bool);
+bool __cdecl hk_has_unlocked_tower(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr, System_String_o* tower_id, bool ignore_debug)
+{
+
+	if (ui::unlock_all_towers)
+		return true;
+
+	return reinterpret_cast<f_has_unlocked_tower>(hooks::hooks[5].original_function)(thisptr, tower_id, ignore_debug);
+
+}
+
+using f_has_unlocked_hero = bool(__cdecl*)(Assets_Scripts_Unity_Player_Btd6Player_o*, System_String_o*);
+bool __cdecl hk_has_unlocked_hero(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr, System_String_o* tower_skin_id)
+{
+
+	if (ui::unlock_all_heros)
+		return true;
+
+	return reinterpret_cast<f_has_unlocked_hero>(hooks::hooks[6].original_function)(thisptr, tower_skin_id);
+
+}
+
+using f_coop_update = void(__cdecl*)(Assets_Scripts_Unity_UI_New_Coop_CoopLobbyScreen_o*);
+void __cdecl hk_coop_update(Assets_Scripts_Unity_UI_New_Coop_CoopLobbyScreen_o* thisptr)
+{
+
+	if (ui::single_player_coop) 
+	{
+
+		thisptr->fields.readyBtn->fields.m_Interactable = true;
+		thisptr->fields.readyBtn->fields.m_EnableCalled = true;
+
+	}
+
+	return reinterpret_cast<f_coop_update>(hooks::hooks[7].original_function)(thisptr);
+
+}
+
+using f_has_knowledge = bool(__cdecl*)(Assets_Scripts_Unity_Player_Btd6Player_o*, System_String_o*);
+bool __cdecl hk_has_knowledge(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr, System_String_o* knowledge_id)
+{
+
+	if (ui::unlock_all_mk)
+		return true;
+
+	return reinterpret_cast<f_has_knowledge>(hooks::hooks[8].original_function)(thisptr, knowledge_id);
+
+}
+
+using f_can_get_map = bool(__cdecl*)(Assets_Scripts_Unity_Player_Btd6Player_o*, System_String_o*);
+bool __cdecl hk_can_get_map(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr, System_String_o* map)
+{
+
+	if (ui::unlock_all_maps)
+		return true;
+
+	return reinterpret_cast<f_can_get_map>(hooks::hooks[9].original_function)(thisptr, map);
+
+}
+
 void hooks::init()
 {
 
@@ -126,6 +214,48 @@ void hooks::init()
 	if (!hook_function(il2cpp::get_method("Assets.Scripts.Simulation.Towers", "TowerManager", "GetFreeUpgrade")->methodPointer, hk_tower_free_upgrade))
 	{
 		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking getfreeupgrade.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.UI_New.InGame", "InGame", "Update")->methodPointer, hk_ingame_update))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking ingameupdate.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "HasUpgrade")->methodPointer, hk_has_upgrade))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking hasupgrade.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "HasUnlockedTower")->methodPointer, hk_has_unlocked_tower))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking hasunlockedtower.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "HasUnlockedHero")->methodPointer, hk_has_unlocked_hero))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking hasunlockedhero.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.UI_New.Coop", "CoopLobbyScreen", "Update")->methodPointer, hk_coop_update))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking coopupdate.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "HasKnowledge")->methodPointer, hk_has_knowledge))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking hasknowledge.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "IsMapUnlocked")->methodPointer, hk_can_get_map))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking cangetmap.", NULL);
 		exit(0);
 	}
 
