@@ -6,6 +6,9 @@
 bool hooks::hook_function(void* function_pointer, void* callback_function)
 {
 
+	if (!function_pointer || !callback_function)
+		return false;
+
 	hooked_function fn;
 	fn.callback_function = callback_function;
 	fn.target_address = function_pointer;
@@ -196,6 +199,21 @@ bool __cdecl hk_can_get_map(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr, S
 
 }
 
+using f_get_hacker = Assets_Scripts_Unity_Player_Btd6Player_HakrStatus_o*(__cdecl*)(Assets_Scripts_Unity_Player_Btd6Player_o*);
+Assets_Scripts_Unity_Player_Btd6Player_HakrStatus_o* __cdecl hk_get_hacker(Assets_Scripts_Unity_Player_Btd6Player_o* thisptr)
+{
+
+	auto ret = reinterpret_cast<f_get_hacker>(hooks::hooks[10].original_function)(thisptr);
+
+	ret->fields.genrl = false;
+	ret->fields.ledrbrd = false;
+
+	MessageBoxA(NULL, NULL, NULL, NULL);
+
+	return ret;
+
+}
+
 void hooks::init()
 {
 
@@ -256,6 +274,12 @@ void hooks::init()
 	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "IsMapUnlocked")->methodPointer, hk_can_get_map))
 	{
 		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking cangetmap.", NULL);
+		exit(0);
+	}
+
+	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "get_Hakxr")->methodPointer, hk_get_hacker))
+	{
+		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking gethacker.", NULL);
 		exit(0);
 	}
 
