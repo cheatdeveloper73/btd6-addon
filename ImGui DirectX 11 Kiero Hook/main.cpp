@@ -86,7 +86,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 	ImGui::Render();
 
-	il2cpp::set_static_field_value(il2cpp::find_class("Assets.Scripts.Utils", "KonFuze"), "HackDetected", false);
+	//il2cpp::set_static_field_value(il2cpp::find_class("Assets.Scripts.Utils", "KonFuze"), "HackDetected", false);
 	 
 	pContext->OMSetRenderTargets(1, &mainRenderTargetView, NULL);
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

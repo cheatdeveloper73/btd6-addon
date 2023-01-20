@@ -127,7 +127,9 @@ void text_centered(const char* text) {
 bool script_chip(AstroScript script)
 {
 
-	ImVec2 chip_size(ui::window_size.x - 20, 80);
+	auto sz = ImGui::GetWindowSize();
+
+	ImVec2 chip_size(sz.x - 20, 80);
 
 	bool ret = false;
 
@@ -137,9 +139,9 @@ bool script_chip(AstroScript script)
 		ImGui::Text(script.name.c_str());
 	else
 		ImGui::Text(std::string(script.name + " - Running").c_str());
-	ImGui::SameLine((ui::window_size.x - 20) - 29);
+	ImGui::SameLine((sz.x - 20) - 29);
 
-	if (ImGui::Button(ICON_FA_WRENCH))
+	if (ImGui::Button(ICON_FA_COG))
 	{
 		ui::current_mod_index = script.id;
 		ImGui::OpenPopup("ButtonSettings");
@@ -163,8 +165,6 @@ bool script_chip(AstroScript script)
 			ui::should_render_editor = true;
 			ui::finished_editing_script = false;
 		}
-
-		ImGui::Checkbox("Enable Risky Features", &script.risky_features_enabled);
 
 		ImGui::EndPopup();
 
@@ -222,8 +222,11 @@ void ui::render()
 	}
 
 	ImGui::SetNextWindowPos(ImVec2(window_pos.x, window_pos.y), ImGuiCond_Once);
-	ImGui::SetNextWindowSize(ImVec2(window_size.x, window_size.y));
+	ImGui::SetNextWindowSize(ImVec2(window_size.x, window_size.y), ImGuiCond_Once);
+	ImGui::SetNextWindowSizeConstraints(ImVec2(630, 550), ImVec2(9999, 9999));
 	ImGui::SetNextWindowBgAlpha(1.0f);
+
+	auto sz = ImGui::GetWindowSize();
 
 	ImGui::Begin("##btd6addon", &menu_open, window_flags);
 	{
@@ -231,7 +234,7 @@ void ui::render()
 		auto draw = ImGui::GetWindowDrawList();
 		auto pos = ImGui::GetWindowPos();
 
-		ImGui::BeginChild("tabs", ImVec2(window_size.x - 10, 60), true);
+		ImGui::BeginChild("tabs", ImVec2(sz.x - 10, 60), true);
 
 		if (tab("Features", ImVec2((620 / 2) - 5, 50), current_tab == 0)) current_tab = 0;
 		ImGui::SameLine();
@@ -289,11 +292,12 @@ void ui::render()
 
 				ImGui::BeginChild("content", ImVec2(0, 0), true, ImGuiWindowFlags_NoScrollbar);
 
-				ImVec2 child_size(ui::window_size.x - 20, 40);
+				ImVec2 child_size(sz.x - 20, 40);
 
 				ImGui::BeginChild("modoptions", child_size, true);
 
-				ImGui::Button("Refresh Mods");
+				if (ImGui::Button("Reload Mods"))
+					scripting.reload_scripts();
 				static bool reeq = false;
 				ImGui::SameLine();
 				ImGui::Checkbox("Enable Risky Functions", &reeq);

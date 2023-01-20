@@ -277,10 +277,10 @@ void hooks::init()
 		exit(0);
 	}
 
-	if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "get_Hakxr")->methodPointer, hk_get_hacker))
-	{
-		MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking gethacker.", NULL);
-		exit(0);
-	}
+	//if (!hook_function(il2cpp::get_method("Assets.Scripts.Unity.Player", "Btd6Player", "get_Hakxr")->methodPointer, hk_get_hacker))
+	//{
+	//	MessageBoxA(NULL, "btd6 addon - error", "Failed in hooking gethacker.", NULL);
+	//	exit(0);
+	//}
 
 }

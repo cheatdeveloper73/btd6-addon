@@ -19,7 +19,7 @@ namespace ui
 	inline ImVec2 screen_res{ 000, 000 };
 	inline ImVec2 window_pos{ 0, 0 };
 	inline ImVec2 window_size{ 630, 550 };
-	inline DWORD  window_flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar;
+	inline DWORD  window_flags = ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar;
 	inline ImFont* code_font = nullptr;
 	inline int current_tab = 0;
 	inline bool finished_editing_script = false;

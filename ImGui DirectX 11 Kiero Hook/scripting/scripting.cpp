@@ -246,7 +246,34 @@ inline void quicklog(const std::string& text)
 		 CHECK(scriptengine->RegisterGlobalFunction("int GetKeyState(int key)", asFUNCTION(GetAsyncKeyState), asCALL_CDECL));
 	 }
 
+	 {
 
+		CHECK(scriptengine->SetDefaultNamespace(""))
+		CHECK(scriptengine->RegisterObjectType("Vector2", sizeof(ImVec2), asOBJ_VALUE | asOBJ_POD | asGetTypeTraits<ImVec2>()))
+		CHECK(scriptengine->RegisterObjectBehaviour("Vector2", asBEHAVE_CONSTRUCT, "void f(float x, float y)", asFUNCTION(ConstructVector2), asCALL_CDECL_OBJLAST))
+		CHECK(scriptengine->RegisterObjectProperty("Vector2", "float x", asOFFSET(ImVec2, ImVec2::x)))
+		CHECK(scriptengine->RegisterObjectProperty("Vector2", "float y", asOFFSET(ImVec2, ImVec2::y)))
+
+		CHECK(scriptengine->RegisterObjectType("Color", sizeof(ImColor), asOBJ_VALUE | asOBJ_POD | asGetTypeTraits<ImColor>()))
+		CHECK(scriptengine->RegisterObjectBehaviour("Color", asBEHAVE_CONSTRUCT, "void f(int r, int g, int b, int a)", asFUNCTION(ConstructColor), asCALL_CDECL_OBJLAST))
+		CHECK(scriptengine->RegisterObjectProperty("Color", "int r", asOFFSET(ImColor, ImColor::Value.x)))
+		CHECK(scriptengine->RegisterObjectProperty("Color", "int g", asOFFSET(ImColor, ImColor::Value.y)))
+		CHECK(scriptengine->RegisterObjectProperty("Color", "int b", asOFFSET(ImColor, ImColor::Value.z)))
+		CHECK(scriptengine->RegisterObjectProperty("Color", "int a", asOFFSET(ImColor, ImColor::Value.w)))
+
+	 }
+
+	 {
+
+		CHECK(scriptengine->SetDefaultNamespace("Render"));
+		CHECK(scriptengine->RegisterGlobalFunction("void AddCircle(Vector2 Pos, float Radius, Color Col)", asFUNCTION(drawing_interface::RenderCircle), asCALL_CDECL))
+		CHECK(scriptengine->RegisterGlobalFunction("void AddText(Vector2 Pos, string Text, Color Col)", asFUNCTION(drawing_interface::RenderText), asCALL_CDECL))
+		CHECK(scriptengine->RegisterGlobalFunction("Vector2 GetDisplaySize()", asFUNCTION(drawing_interface::GetDisplaySize), asCALL_CDECL))
+		CHECK(scriptengine->RegisterGlobalFunction("Vector2 GetCursorPos()", asFUNCTION(drawing_interface::GetCursorPos), asCALL_CDECL))
+		CHECK(scriptengine->RegisterGlobalFunction("void AddRect(Vector2 From, Vector2 To, Color Col)", asFUNCTION(drawing_interface::RenderRectangle), asCALL_CDECL))
+		CHECK(scriptengine->RegisterGlobalFunction("void AddRectFilled(Vector2 From, Vector2 To, Color Col)", asFUNCTION(drawing_interface::RenderRectangleFilled), asCALL_CDECL))
+
+	 }
 
 	 return true;
 
@@ -562,9 +589,9 @@ inline void quicklog(const std::string& text)
 
 	 }
 
-	 for (auto _script : current_scripts)
-		 for (auto callback : _script.callbacks)
-			 if (script.id == script.id)
+	 for (const auto& _script : current_scripts)
+		 for (const auto& callback : _script.callbacks)
+			 if (_script.id == script.id)
 				 if (callback.callback_name == callback_name)
 				 {
 					 quicklog("Callback for " + callback_name + " already registered! " + script.name);

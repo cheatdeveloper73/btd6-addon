@@ -93,6 +93,20 @@ FloatReference* FloatReferenceFactory(float _default)
 
 }
 
+void ConstructVector2(float x, float y, ImVec2* self)
+{
+
+	new(self) ImVec2(x, y);
+
+}
+
+void ConstructColor(int r, int g, int b, int a, ImVec2* self)
+{
+
+	new(self) ImColor(r, g, b, a);
+
+}
+
 namespace il2cpp_interface
 {
 
@@ -134,51 +148,51 @@ namespace il2cpp_interface
 		switch (gen->GetArgTypeId(2))
 		{
 
-			case 2:
-			{
-				gen->SetReturnByte(il2cpp::get_static_field_value<char>(klass, field.c_str()));
-				break;
-			}
-			case 3:
-			{
-				gen->SetReturnByte(il2cpp::get_static_field_value<short>(klass, field.c_str()));
-				break;
-			}
-			case 4:
-			{
-				gen->SetReturnDWord(il2cpp::get_static_field_value<int>(klass, field.c_str()));
-				break;
-			}
-			case 5:
-			{
-				gen->SetReturnDWord(il2cpp::get_static_field_value<long long>(klass, field.c_str()));
-				break;
-			}
-			case 6:
-			{
-				gen->SetReturnDWord(il2cpp::get_static_field_value<unsigned char>(klass, field.c_str()));
-				break;
-			}
-			case 9:
-			{
-				gen->SetReturnQWord(il2cpp::get_static_field_value<unsigned long long>(klass, field.c_str()));
-				break;
-			}
-			case 10:
-			{
-				gen->SetReturnFloat(il2cpp::get_static_field_value<float>(klass, field.c_str()));
-				break;
-			}
-			case 11:
-			{
-				gen->SetReturnDouble(il2cpp::get_static_field_value<double>(klass, field.c_str()));
-				break;
-			}
-			default:
-			{
-				gen->SetReturnAddress(il2cpp::get_static_field_value<void*>(klass, field.c_str()));
-				break;
-			}
+		case 2:
+		{
+			gen->SetReturnByte(il2cpp::get_static_field_value<char>(klass, field.c_str()));
+			break;
+		}
+		case 3:
+		{
+			gen->SetReturnByte(il2cpp::get_static_field_value<short>(klass, field.c_str()));
+			break;
+		}
+		case 4:
+		{
+			gen->SetReturnDWord(il2cpp::get_static_field_value<int>(klass, field.c_str()));
+			break;
+		}
+		case 5:
+		{
+			gen->SetReturnDWord(il2cpp::get_static_field_value<long long>(klass, field.c_str()));
+			break;
+		}
+		case 6:
+		{
+			gen->SetReturnDWord(il2cpp::get_static_field_value<unsigned char>(klass, field.c_str()));
+			break;
+		}
+		case 9:
+		{
+			gen->SetReturnQWord(il2cpp::get_static_field_value<unsigned long long>(klass, field.c_str()));
+			break;
+		}
+		case 10:
+		{
+			gen->SetReturnFloat(il2cpp::get_static_field_value<float>(klass, field.c_str()));
+			break;
+		}
+		case 11:
+		{
+			gen->SetReturnDouble(il2cpp::get_static_field_value<double>(klass, field.c_str()));
+			break;
+		}
+		default:
+		{
+			gen->SetReturnAddress(il2cpp::get_static_field_value<void*>(klass, field.c_str()));
+			break;
+		}
 
 		}
 
@@ -260,7 +274,7 @@ namespace winapi_interface
 	void SendLeftClickUp()
 	{
 
-		INPUT ipt[1] = {0};
+		INPUT ipt[1] = { 0 };
 
 		ipt[0].type = INPUT_MOUSE;
 		ipt[0].mi.dwFlags = MOUSEEVENTF_LEFTUP;
@@ -279,6 +293,46 @@ namespace winapi_interface
 
 		SendInput(1, ipt, sizeof(ipt));
 
+	}
+
+}
+
+namespace drawing_interface
+{
+
+	const auto& GetDraw()
+	{
+		return ImGui::GetBackgroundDrawList();
+	}
+
+	void RenderCircle(ImVec2 Pos, float Diameter, ImColor Color)
+	{
+		GetDraw()->AddCircle(Pos, Diameter, Color);
+	}
+
+	void RenderText(ImVec2 Pos, std::string Text, ImColor Color)
+	{
+		GetDraw()->AddText(Pos, Color, Text.c_str());
+	}
+
+	void RenderRectangle(ImVec2 From, ImVec2 To, ImColor Color, float Rounding)
+	{
+		GetDraw()->AddRect(From, To, Color, Rounding);
+	}
+
+	void RenderRectangleFilled(ImVec2 From, ImVec2 To, ImColor Color, float Rounding)
+	{
+		GetDraw()->AddRectFilled(From, To, Color, Rounding);
+	}
+
+	ImVec2 GetCursorPos()
+	{
+		return ImGui::GetIO().MousePos;
+	}
+
+	ImVec2 GetDisplaySize()
+	{
+		return ImGui::GetIO().DisplaySize;
 	}
 
 }
